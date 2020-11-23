@@ -4,6 +4,19 @@ import java.util.LinkedList;
 
 public class Container{
     LinkedList<Member> objList = new LinkedList<>();
+
+    private static Container single_instance = null;
+    private Container(){
+        objList = new LinkedList<>();
+    }
+    public static Container getInstance(){
+        if(single_instance == null){
+            single_instance = new Container();
+        }
+        return single_instance;
+    }
+
+
     public void addMember(Member member)throws ContainerException {
         if(hasMember(member)){
             throw new ContainerException("Das Member-Objekt mit der ID [" + member.getID() +
@@ -39,3 +52,7 @@ public class Container{
         return objList.size();
     }
 }
+
+    public void store(){
+
+    }
